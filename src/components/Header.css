@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: rgb(61, 99, 101);
+  box-shadow: 3px 3px 12px 2px rgba(12, 113, 90, 0.73);
+}
+
+h3 {
+  margin-right: 50px;
+}
