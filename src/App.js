@@ -10,6 +10,8 @@ function App() {
   const [currency1, setCurrency1] = useState("USD");
   const [currency2, setCurrency2] = useState("UAH");
   const [rates, setRates] = useState([]);
+  const [UAHtoEUR, setUAHtoEUR] = useState("");
+  const [UAHtoUSD, setUAHtoUSD] = useState("");
 
   useEffect(() => {
     axios
@@ -25,10 +27,12 @@ function App() {
     if (!!rates) {
       handleAmount1Change(1);
     }
+    setUAHtoEUR((rates.UAH / rates.EUR).toFixed(2));
+    setUAHtoUSD((rates.UAH / rates.USD).toFixed(2));
   }, [rates]);
 
   const format = (number) => {
-    return number.toFixed(4);
+    return number.toFixed(2);
   };
 
   const handleAmount1Change = (amount1) => {
@@ -50,9 +54,6 @@ function App() {
     setAmount1(format((amount2 * rates[currency1]) / rates[currency2]));
     setCurrency2(currency2);
   };
-
-  const UAHtoEUR = (rates.UAH / rates.EUR).toFixed(2);
-  const UAHtoUSD = (rates.UAH / rates.USD).toFixed(2);
 
   return (
     <div className="App">
